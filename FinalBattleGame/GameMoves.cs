@@ -3,7 +3,4 @@
 class GameMoves
 {
     public static void doNothing(Character character) { MoveMessages.doNothing(character); }
-
-
-
 }

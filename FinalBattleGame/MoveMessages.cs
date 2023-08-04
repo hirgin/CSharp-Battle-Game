@@ -4,7 +4,7 @@ static class MoveMessages
 {
     public static void doNothing(Character character)
     {
-        Console.WriteLine($"{character} did NOTHING.");
+        Console.WriteLine($"{character._name} did NOTHING.");
     }
 
 
