@@ -13,6 +13,21 @@ class CharacterParty
         return _party[0];
     }
 
+    public void checkStatus() // function that checks if members of the party have died or if the entire party has died
+    {
+        for(int i = 0; i < _party.Count; i++) 
+        {
+            if (_party[i] != null  && _party[i].deathCheck())
+            {
+                _party.RemoveAt(i);
+                Console.WriteLine("REMOVED");
+                i--;
+                
+            }
+        }
+        if ( _party.Count <= 0 ) { Console.WriteLine("GAME DONE"); Environment.Exit(1); }
+    }
+
     public void displayParty()
     {
         foreach (Character character in _party)

@@ -2,17 +2,17 @@
 
 class Game
 {
-    private CharacterParty enemyParty = new CharacterParty();
+    private CharacterParty villainParty = new CharacterParty();
     private CharacterParty playerParty = new CharacterParty();
-    private Character player = new Character("User",100);
+    private Character player = new Character("User",25, Mobs.PLAYER);
     public void startGame()
     {
         setPlayerName();
-        Skeleton sam = new Skeleton("Skelly", 50);
-        enemyParty.addToParty(sam);
-        enemyParty.displayParty();
+        Skeleton sam = new Skeleton("Skelly", 5, Mobs.SKELETON);
+        villainParty.addToParty(sam);
+       
         playerParty.addToParty(player);
-        playerParty.displayParty();
+    
         runGame();
     }
 
@@ -20,28 +20,32 @@ class Game
     {
         while (true)
         {
-            Thread.Sleep(1000);
-            partyMoves(enemyParty);
+            Thread.Sleep(2500);
+            partyMoves(villainParty);
             Console.WriteLine();
             partyMoves(playerParty);
             Console.WriteLine();
+            playerParty.checkStatus();
+            villainParty.checkStatus();
+            villainParty.displayParty();
         }
     }
 
     public void partyMoves(CharacterParty party)
     {
+        CharacterParty enemy = party == villainParty ? playerParty : villainParty;
         foreach (Character character in party._party) 
         {
-            chooseMove(character);
+            chooseMove(character,enemy);
         }
     }
 
 
 
-    public void chooseMove(Character character)
+    public void chooseMove(Character character, CharacterParty enemy)
     {
         Console.WriteLine($"It is {character._name}'s turn...");
-        GameMoves.doNothing(character);
+        GameMoves.attackMove(character, enemy.getFirstInParty());
     }
 
     private void setPlayerName()

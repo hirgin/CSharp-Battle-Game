@@ -2,7 +2,7 @@
 
 class Skeleton : Character
 {
-    public Skeleton(string name, int health) : base(name, health)
+    public Skeleton(string name, int health, Mobs type) : base(name, health, type)
     {
         
     }
