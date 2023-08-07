@@ -25,8 +25,10 @@ class CharacterParty
                 
             }
         }
-        if ( _party.Count <= 0 ) { Console.WriteLine("GAME DONE"); Environment.Exit(1); }
+        if ( _party.Count <= 0 ) { Console.WriteLine($"{_party} has won!"); Environment.Exit(1); }
     }
+
+    public void removeFromParty(Character character) { _party.Remove(character); }
 
     public void displayParty()
     {

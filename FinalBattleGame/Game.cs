@@ -22,12 +22,13 @@ class Game
         {
             Thread.Sleep(2500);
             partyMoves(villainParty);
+            playerParty.checkStatus();
             Console.WriteLine();
             partyMoves(playerParty);
             Console.WriteLine();
-            playerParty.checkStatus();
+     
             villainParty.checkStatus();
-            villainParty.displayParty();
+           
         }
     }
 

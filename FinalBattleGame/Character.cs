@@ -17,13 +17,24 @@ class Character
     public void takeDamage(int damage) // deals damage to current character based off parameter
     { 
         _health -= damage;
-
+        deathCheck();
     }
 
     public void displayHP() { Console.WriteLine($"{_name} is at {_health}HP"); }
-   
 
-    public bool deathCheck() { return _health <= 0; } // checks if character health is below 0 and if they die 
+
+    public bool deathCheck()// checks if character health is below 0 and if they die 
+    {
+        if (_health <= 0) // if they have died, output it
+        {
+            Console.WriteLine($"{_name} has been defeated!");
+            
+            return true;
+        }
+        return false;
+
+    }
+       
 
     public void setName (string name) { _name = name; }
 }
